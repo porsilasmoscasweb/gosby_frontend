@@ -1,1 +1,26 @@
-<p>pod-detail works!</p>
+<div>
+    <img src="{{ podcast.image }}" alt="">
+    <p>{{ podcast.title }}</p>
+    <p><span>by </span> {{ podcast.author }}</p>
+    <p>Description </p>
+    <p>{{ podcast.description }}</p>
+</div>
+
+<div>
+    <div>Episodes: {{ totalEpisode }}</div>
+
+    <div id="podcasts-list" *ngIf="totalEpisode > 0; else noResults">
+        <div class="" *ngFor="let item of episode; let i = index" style="border: 1px solid red; margin: 10px">
+            <a routerLink="/podcast/{{ podcastId }}/episode/{{ item.id }}" routerLinkActive="active"
+                ariaCurrentWhenActive="page">
+                <p>{{ item.title }}</p>
+                <p>{{ item.date }}</p>
+                <p>{{ item.duration }}</p>
+            </a>
+        </div>
+    </div>
+
+    <ng-template #noResults>
+        <p>No results found for "1535809341".</p>
+    </ng-template>
+</div>
