@@ -1,1 +1,19 @@
-<p>podcast works!</p>
+<div>
+    <input type="text" placeholder="Search" [(ngModel)]="searchText" />
+</div>
+
+<div id="podcasts-list" *ngIf="(podcasts | filter: searchText:filterMetadata).length > 0; else noResults">
+    <div class="" *ngFor="let item of podcasts | filter: searchText:filterMetadata; let i = index" style="border: 1px solid red; margin: 10px">
+        <a routerLink="podcast/{{ item.detail }}" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <img src="{{ item.image }}" alt="">
+            <p>{{ item.title }}</p>
+            <p><span>Author: </span> {{ item.author }}</p>
+        </a>
+    </div>
+</div>
+
+<div>{{filterMetadata.count}}</div>
+
+<ng-template #noResults>
+    <p>No results found for "{{searchText}}".</p>
+</ng-template>

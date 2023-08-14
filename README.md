@@ -24,7 +24,10 @@ rxjs                            7.8.1
 typescript                      5.1.6
 zone.js                         0.13.1
 
+
 npm install
+npm i -D @angular-builders/custom-webpack
+
 ng serve --open
 
 ## TO DO
@@ -46,3 +49,7 @@ STYLE :: SASS
 - Url to get the top 100 most popular podcast from Apple: [https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json]
 - Url to get the podcast details: [https://itunes.apple.com/lookup?id=934552872&media=podcast&entity=podcastEpisode&limit=20]
 - If you have CORS issues use a service like [https://allorigins.win/]
+
+## Documentation & source
+
+- Search Podcasts [https://stackblitz.com/edit/angular-filter-list-of-items?file=src%2Fapp%2Fapp.component.html]
