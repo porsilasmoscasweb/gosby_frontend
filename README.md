@@ -27,6 +27,7 @@ zone.js                         0.13.1
 
 npm install
 npm i -D @angular-builders/custom-webpack
+npm install bootstrap --save
 
 ng serve --open
 

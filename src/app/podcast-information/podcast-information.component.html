@@ -1,13 +1,23 @@
-<div>
-    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-        <img src="{{ podcast.image }}" alt="">
+<div class="card podcast-card">
+    <a class="px-3 pt-3" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+        <img class="card-img-top rounded" src="{{ podcast.image }}" alt="{{ podcast.title }}">
+        <hr>
     </a>
-    <p>{{ podcast.title }}</p>
-    <p><span>by </span>
-        <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-            {{ podcast.author }}
-        </a>
-    </p>
-    <p>Description </p>
-    <p>{{ podcast.description }}</p>
+
+
+    <div class="card-body">
+        <div class="pb-3">
+            <h4 class="card-title">{{ podcast.title }}</h4>
+            <p class="card-text"><span>by </span>
+                <a class="text-decoration-none" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+                    {{ podcast.author }}
+                </a>
+            </p>
+        </div>
+        
+        <hr>
+        
+        <h5>Description</h5>
+        <p><i>{{ podcast.description }}</i></p>
+    </div>
 </div>

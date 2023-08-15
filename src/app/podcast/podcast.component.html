@@ -1,19 +1,34 @@
-<div>
-    <input type="text" placeholder="Search" [(ngModel)]="searchText" />
-</div>
+<div class="d-flex flex-column-reverse">
 
-<div id="podcasts-list" *ngIf="(podcasts | filter: searchText:filterMetadata).length > 0; else noResults">
-    <div class="" *ngFor="let item of podcasts | filter: searchText:filterMetadata; let i = index" style="border: 1px solid red; margin: 10px">
-        <a routerLink="podcast/{{ item.detail }}" routerLinkActive="active" ariaCurrentWhenActive="page">
-            <img src="{{ item.image }}" alt="">
-            <p>{{ item.title }}</p>
-            <p><span>Author: </span> {{ item.author }}</p>
-        </a>
+    <div id="podcasts-list" class="d-flex col-12 flex-wrap"
+        *ngIf="(podcasts | filter: searchText:filterMetadata).length > 0; else noResults">
+
+        <div class="card col-3" *ngFor="let item of podcasts | filter: searchText:filterMetadata; let i = index">
+
+            <a class="text-center m-2 d-flex flex-column text-decoration-none" routerLink="podcast/{{ item.detail }}" routerLinkActive="active"
+                ariaCurrentWhenActive="page">
+                <div class="img-circle">
+                    <img class="rounded-circle w-50" src="{{ item.image }}" alt="{{ item.title }}">
+                </div>
+
+                <div class="card-body t-50">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text"><span>Author: </span> {{ item.author }}</p>
+                </div>
+
+                <p></p>
+            </a>
+
+        </div>
+
     </div>
+
+    <div class="d-flex align-item-center justify-content-end px-2 py-3 mb-100">
+        <span class="btn btn-primary bubble">{{filterMetadata.count}}</span>
+        <input class="form-control search" type="text" placeholder="Search" [(ngModel)]="searchText" />
+    </div>
+
+    <ng-template #noResults>
+        <p>No results found for "{{searchText}}".</p>
+    </ng-template>
 </div>
-
-<div>{{filterMetadata.count}}</div>
-
-<ng-template #noResults>
-    <p>No results found for "{{searchText}}".</p>
-</ng-template>

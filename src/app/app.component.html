@@ -1,5 +1,18 @@
-<a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-    <h1>{{ title }}</h1>
-</a>
+<div class="wrapper py-5">
+    <div class="container">
 
-<router-outlet></router-outlet>
+        <div class="row">
+            <h1 class="pb-2">
+                <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"
+                    class="text-decoration-none font-weight-normal">
+                    {{ title }}
+                </a>
+            </h1>
+        </div>
+
+        <div class="row">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>

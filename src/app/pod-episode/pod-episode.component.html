@@ -1,16 +1,21 @@
-<app-podcast-information></app-podcast-information>
+<div class="row py-3 episodes">
 
-<div>
-    <div id="podcasts-list" *ngIf="exists; else noResults">
-        <p>{{ episode.title }}</p>
-        <div [innerHTML]="episode.description"></div>
-        <audio preload="auto" controls="">
-            <source type="audio/ogg" src="{{ episode.previewUrl }}">
-            <source type="audio/mpeg" src="{{ episode.previewUrl }}">
-        </audio>
+    <div class="col-4">
+        <app-podcast-information></app-podcast-information>
     </div>
 
-    <ng-template #noResults>
-        <p>No results found for "{{ episodeId }}".</p>
-    </ng-template>
+    <div class="col-8">
+        <div id="podcasts-list" class="form-control p-3" *ngIf="exists; else noResults">
+            <h4>{{ episode.title }}</h4>
+            <div class="py-3" [innerHTML]="episode.description"></div>
+            <audio preload="auto" controls="" class="w-100 pt-4">
+                <source type="audio/ogg" src="{{ episode.previewUrl }}">
+                <source type="audio/mpeg" src="{{ episode.previewUrl }}">
+            </audio>
+        </div>
+
+        <ng-template #noResults>
+            <p>No results found for "{{ episodeId }}".</p>
+        </ng-template>
+    </div>
 </div>
