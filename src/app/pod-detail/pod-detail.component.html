@@ -1,26 +1,31 @@
-<div>
-    <img src="{{ podcast.image }}" alt="">
-    <p>{{ podcast.title }}</p>
-    <p><span>by </span> {{ podcast.author }}</p>
-    <p>Description </p>
-    <p>{{ podcast.description }}</p>
-</div>
+<app-podcast-information></app-podcast-information>
 
 <div>
-    <div>Episodes: {{ totalEpisode }}</div>
+    <div>Episodes: {{ totalEpisodes }}</div>
 
-    <div id="podcasts-list" *ngIf="totalEpisode > 0; else noResults">
-        <div class="" *ngFor="let item of episode; let i = index" style="border: 1px solid red; margin: 10px">
-            <a routerLink="/podcast/{{ podcastId }}/episode/{{ item.id }}" routerLinkActive="active"
-                ariaCurrentWhenActive="page">
-                <p>{{ item.title }}</p>
-                <p>{{ item.date }}</p>
-                <p>{{ item.duration }}</p>
-            </a>
-        </div>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Date</th>
+                <th scope="col">Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of episode; let i = index">
+                <th scope="row">
+                    <a routerLink="/podcast/{{ podcastId }}/episode/{{ item.id }}" routerLinkActive="active"
+                        ariaCurrentWhenActive="page">
+                        <p>{{ item.title }}</p>
+                    </a>
+                </th>
+                <th>{{ item.date | date:"MM/dd/yyyy" }}</th>
+                <th>{{ item.duration | date:"HH:mm" }}</th>
+            </tr>
+        </tbody>
+    </table>
 
     <ng-template #noResults>
-        <p>No results found for "1535809341".</p>
+        <p>No results found for "{{ podcastId }}".</p>
     </ng-template>
 </div>

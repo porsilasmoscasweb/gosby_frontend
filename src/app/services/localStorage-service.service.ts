@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Podcast } from '../models/podcast.model';
 
 @Injectable({
     providedIn: 'root'
@@ -51,7 +50,7 @@ export class LocalStorageService {
             return null
         }
 
-        console.log('localStorage');
+        console.log(key + ' localStorage');
 
         return item.value
     }

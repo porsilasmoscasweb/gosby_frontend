@@ -14,7 +14,7 @@ export class ApiserviceService {
   res: any;
   entry: any;
   podcasts: Podcast[] = [];
-  episode: Episode[] = [];
+  episodes: Episode[] = [];
 
   constructor(private _http: HttpClient, private _localStorageService: LocalStorageService) { }
 
@@ -26,16 +26,19 @@ export class ApiserviceService {
           this.res = this.res.feed.entry;
 
           for (const [key, value] of Object.entries(this.res)) {
+            let podcast = new Podcast();
 
             this.entry = value;
 
-            this.podcasts.push(new Podcast(
+            podcast.setPodcast(
               this.entry['im:image'][0].label,
               this.entry['im:name'].label,
               this.entry['summary'].label,
               this.entry['im:artist'].label,
               this.entry.id.attributes['im:id']
-            ));
+            )
+
+            this.podcasts.push(podcast.getPodcast());
           }
 
           console.log('api');
@@ -48,7 +51,7 @@ export class ApiserviceService {
     );
   }
 
-  getEpisode() {
+  getEpisodes() {
     return this._http.get('https://itunes.apple.com/lookup?id=934552872&media=podcast&entity=podcastEpisode&limit=20').pipe(
       map(
         response => {
@@ -56,22 +59,27 @@ export class ApiserviceService {
         this.res = this.res.results;
 
         for (const [key, value] of Object.entries(this.res)) {
+          let episode = new Episode();
 
           this.entry = value;
 
-          this.episode.push(new Episode(
+          episode.setEpisode(
             this.entry.trackId,
             this.entry.trackName,
+            this.entry.description + '<b>this is a test</b>',
+            this.entry.previewUrl,
             this.entry.releaseDate,
             this.entry.trackTimeMillis,
-          ));
+          )
+
+          this.episodes.push(episode.getEpisodes());
         }
 
         console.log('api');
 
-        this._localStorageService.setWithExpiry('episode', this.episode)
+        this._localStorageService.setWithExpiry('episode', this.episodes)
 
-        return this.episode;
+        return this.episodes;
         }
       )
     );

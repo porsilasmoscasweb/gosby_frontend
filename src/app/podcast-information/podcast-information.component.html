@@ -1,0 +1,13 @@
+<div>
+    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+        <img src="{{ podcast.image }}" alt="">
+    </a>
+    <p>{{ podcast.title }}</p>
+    <p><span>by </span>
+        <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+            {{ podcast.author }}
+        </a>
+    </p>
+    <p>Description </p>
+    <p>{{ podcast.description }}</p>
+</div>

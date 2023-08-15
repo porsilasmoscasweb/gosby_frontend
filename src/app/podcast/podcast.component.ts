@@ -12,10 +12,10 @@ import { LocalStorageService } from '../services/localStorage-service.service';
 // TODO
 
 // DONE :: Show the 100 main popular podcasts from Apple(more info below)
-// Cache the result for a day into the client memory so data will not be retrieved if the page refresh.
-// There is a filter where user can search for the podcast title and author’s names.
-// Filter as the user is writing.
-// When the user click a podcast then navigate to the podcast details view.
+// DONE :: Cache the result for a day into the client memory so data will not be retrieved if the page refresh.
+// DONE :: There is a filter where user can search for the podcast title and author’s names.
+// DONE :: Filter as the user is writing.
+// DONE :: When the user click a podcast then navigate to the podcast details view.
 
 export class PodcastComponent {
 
