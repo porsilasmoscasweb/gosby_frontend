@@ -41,7 +41,7 @@ export class ApiserviceService {
             this.podcasts.push(podcast.getPodcast());
           }
 
-          console.log('api');
+          // console.log('api');
 
           this._localStorageService.setWithExpiry('podcasts', this.podcasts)
 
@@ -75,7 +75,7 @@ export class ApiserviceService {
           this.episodes.push(episode.getEpisodes());
         }
 
-        console.log('api');
+        // console.log('api');
 
         this._localStorageService.setWithExpiry('episode', this.episodes)
 

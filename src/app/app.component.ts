@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Podcaster';
+  display = false;
+
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.display = true;
+        console.log('display')
+      }
+      if (event instanceof NavigationEnd) {
+        this.display = false;
+        console.log('NOT display')
+      }
+      // if (event instanceof NavigationError) {
+      // }
+    });
+  }
 }

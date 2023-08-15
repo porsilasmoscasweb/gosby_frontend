@@ -1,13 +1,14 @@
 <div class="wrapper py-5">
     <div class="container">
 
-        <div class="row">
-            <h1 class="pb-2">
+        <div id="hearder" class="row d-flex justify-content-between">
+            <h1 class="pb-2 w-auto">
                 <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"
                     class="text-decoration-none font-weight-normal">
                     {{ title }}
                 </a>
             </h1>
+            <div *ngIf="display == true" class="circle circle-lg bg-primary navigation-bubble"></div>
         </div>
 
         <div class="row">

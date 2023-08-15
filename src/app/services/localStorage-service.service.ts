@@ -50,7 +50,7 @@ export class LocalStorageService {
             return null
         }
 
-        console.log(key + ' localStorage');
+        // console.log(key + ' localStorage');
 
         return item.value
     }
